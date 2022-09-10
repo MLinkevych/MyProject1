@@ -4,15 +4,22 @@ package schoolMarksProject;
 public class Student extends Parent implements Comparable<Student> {
 
     private String grade;
+    private String studentFirstName;
+    private String studentLastName;
+
 
     /*
      * Constructor for the students objects
      *
      */
 
-    public Student(String parentFirstName, String parentLastName, String grade,
-                   String studentFirstName, String studentLastName) {
-        super(parentFirstName, parentLastName);
+    public Student(String firstName, String lastName, String email, String grade) {
+        super(firstName, lastName, email);
+        this.grade = grade;
+    }
+
+    public Student(String firstName, String lastName, String grade, String studentFirstName, String studentLastName) {
+        super(firstName, lastName);
         this.grade = grade;
         this.studentFirstName = studentFirstName;
         this.studentLastName = studentLastName;
@@ -44,9 +51,7 @@ public class Student extends Parent implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "Student " +
-                "grade= " + grade +  ", studentFirstName= " + studentFirstName +
-                ", studentLastName= " + studentLastName;
+        return "Student grade: "  + grade + " " + studentFirstName + " " + studentLastName;
     }
 
 

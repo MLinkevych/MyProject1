@@ -12,18 +12,38 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) throws IOException {
 
+        /////////////Creating objects of the Teacher class in a List///////////////////////////////////////////
+
 
         Teacher t1 = new Teacher("Anna", "Kornienko", "t1@gmail.com", "1a");
-        Teacher t2 = new Teacher("Julia", "Sazonenko", "t2@gmail.com", "1a");
+        Teacher t2 = new Teacher("Julia", "Ivanova", "t2@gmail.com", "1a");
+
+        //////////////Creating objects of the Parent class in a List///////////////////////////////////////////
 
         Parent p1 = new Parent("Andrey", "Marchenko", "p1@gmail.com");
+        //////////////Creating objects of the Student class in a List///////////////////////////////////////////
         List<Student> students = new ArrayList<>();
         students.add(new Student("Andrey", "Marchenko", "1a", "Julia",
-                "Barchenko"));
+                "Marchenko"));
         students.add(new Student("Inna", "Kovalska", "1a", "Hanna",
                 "Artemchenko"));
         students.add(new Student("Artem", "Dmitruk", "1a", "Mark",
                 "Dmitruk"));
+        students.add(new Student("Artem", "Dmitruk", "1a", "Stas",
+                "Dmitruk"));
+        students.add(new Student("Inna", "Ostapenko", "2a", "Maya",
+                "Ostapenko"));
+        students.add(new Student("Anna", "Sadalska", "2a", "Sergei",
+                "Sadalskyi"));
+        students.add(new Student("Valentina", "Sazonenko", "2a", "Dmitry",
+                "Sazonenko"));
+        students.add(new Student("Valentina", "Sazonenko", "3a", "Svetlana",
+                "Sazonenko"));
+        students.add(new Student("Ihor", "Kovalenko", "3a", "Mark",
+                "Kovalenko"));
+        students.add(new Student("Iryna", "Stasenko", "3a", "Iryna",
+                "Danylenko"));
+
         /*
          * creating a Student object in the JSON file///////////////////////
          * */
@@ -62,7 +82,7 @@ public class Main {
         //////////////////Getting the list of students by last name in alphabetical order///////////////////
 
 
-        Collections.sort(students, Comparator.comparing(Student::getStudentLastName));
+        Collections.sort(students, Comparator.comparing(Student::getGrade).thenComparing(Student::getStudentLastName));
 
 
         for (Student student : students) {
