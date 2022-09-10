@@ -1,8 +1,6 @@
 package schoolMarksProject;
 
 import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.util.*;
@@ -44,10 +42,23 @@ public class Main {
         students.add(new Student("Iryna", "Stasenko", "3a", "Iryna",
                 "Danylenko"));
 
+        //////////////////Getting the list of students by last name in alphabetical order///////////////////
+
+
+        Collections.sort(students, Comparator.comparing(Student::getGrade).thenComparing(Student::getStudentLastName));
+
+
+        /*for (Student student : students) {
+
+            System.out.println(student);
+
+
+        }*/
+
         /*
          * creating a Student object in the JSON file///////////////////////
          * */
-
+/*
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("parentFirstName", "Alina");
         jsonObject.put("parentLastName", "Ivanova");
@@ -65,7 +76,7 @@ public class Main {
         } finally {
             file.close();
         }
-        System.out.println("JSON file created: " + jsonObject);
+        System.out.println("JSON file created: " + jsonObject);*/
 
         ////////////// Creating the list of students and gardes///////////////////////////
 
@@ -73,23 +84,53 @@ public class Main {
         semesterGrades.put(students.get(0), new Grade(12, 10, 10));
         semesterGrades.put(students.get(1), new Grade(11, 11, 8));
         semesterGrades.put(students.get(2), new Grade(10, 11, 12));
+        semesterGrades.put(students.get(3), new Grade(7, 9, 11));
+        semesterGrades.put(students.get(4), new Grade(7, 9, 8));
+        semesterGrades.put(students.get(5), new Grade(8, 11, 10));
+        semesterGrades.put(students.get(6), new Grade(6, 7, 7));
+        semesterGrades.put(students.get(7), new Grade(10, 10, 9));
+        semesterGrades.put(students.get(8), new Grade(12, 11, 12));
+        semesterGrades.put(students.get(9), new Grade(12, 11, 12));
         ///////////////Updating the list to get the average scores and sort out the best student////////////
 
         semesterGrades.entrySet().stream()
-                .collect(Collectors.toMap((Map.Entry::getKey), o -> o.getValue().avgScore()))
-                .forEach((student, Double) -> System.out.println(student.toString() + " " + Double));
+                .collect(Collectors.toMap((Map.Entry::getKey), o -> o.getValue().avgScore()));
+             /*   .forEach((student, Double) -> System.out.println(student.toString() + " " + Double));*/
 
-        //////////////////Getting the list of students by last name in alphabetical order///////////////////
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input a grade: ");
+        String grade = scanner.nextLine();
+        switch (grade){
+            case "1a":
+                students.stream()
+                        .filter(student -> (student.getGrade()=="1a"))
+                        .forEach(student -> System.out.println(student));
+                break;
 
+            case "2a":
+                students.stream()
+                        .filter(student -> (student.getGrade()=="2a"))
+                        .forEach(student -> System.out.println(student));
+                break;
 
-        Collections.sort(students, Comparator.comparing(Student::getGrade).thenComparing(Student::getStudentLastName));
+            case "3a":
 
-
-        for (Student student : students) {
-
-            System.out.println(student);
-
-
+            students.stream()
+                    .filter(student -> (student.getGrade()=="3a"))
+                    .forEach(student -> System.out.println(student));
+            break;
+            default:
+                System.out.println("There is no such grade");
         }
+
+
+        System.out.println("Input a message for the parent: ");
+        Scanner scannerComment = new Scanner(System.in);
+        String commentByTeacher = scannerComment.nextLine();
+
+        t1.comment(commentByTeacher);
+
+
+
     }
 }

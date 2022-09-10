@@ -53,8 +53,7 @@ public class Grade {
     *
     * */
 
-    public double avgScore () {
-        return (getMath()+getEng()+getUkr())/3;
+    public double avgScore () {return  (getMath()+getEng()+getUkr())/3;
     }
 
 
