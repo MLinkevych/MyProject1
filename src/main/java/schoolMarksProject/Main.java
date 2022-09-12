@@ -47,12 +47,15 @@ public class Main {
         semesterGrades.put(students.get(9), new Grade(12, 11, 12));
         ///////////////Updating the list to get the average scores and sort out the best student////////////
 
-        semesterGrades.entrySet().stream().collect(Collectors.toMap((Map.Entry::getKey), o -> o.getValue().avgScore())).forEach((student, Double) -> System.out.println(student.toString() + " " + Double));
+        semesterGrades.entrySet().stream().collect(Collectors.toMap((Map.Entry::getKey), o -> o.getValue().avgScore()))
+                .forEach((student, Double) -> System.out.println(student.toString() + " " + Double));
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input a grade: ");
         String grade = scanner.nextLine();
-        switch (grade) {
+        students.stream()
+                .filter(student -> (student.getGrade() == grade)).forEach(student -> System.out.println(student));
+      /*switch (grade) {
             case "1a":
                 students.stream()
                         .filter(student -> (student.getGrade() == "1a")).forEach(student -> System.out.println(student));
@@ -71,7 +74,7 @@ public class Main {
             default:
                 System.out.println("There is no such grade");
         }
-
+*/
         ////////// Teacher making a comment//////////////////////////////////////////////////
         System.out.println("Input a message for the parent: ");
         Scanner scannerComment = new Scanner(System.in);
@@ -93,5 +96,6 @@ public class Main {
                         .forEach(gr -> System.out.println(gr));
 
         }
+        scan.close();
     }
 }
