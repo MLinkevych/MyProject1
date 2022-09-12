@@ -7,8 +7,8 @@ public class Grade {
 
 
     /*
-    * Constructors
-    * */
+     * Constructors
+     * */
     public Grade() {
 
     }
@@ -20,9 +20,9 @@ public class Grade {
     }
 
     /*
-    * Getters and Setters
-    *
-    * */
+     * Getters and Setters
+     *
+     * */
 
     public int getMath() {
         return math;
@@ -49,13 +49,13 @@ public class Grade {
     }
 
     /*
-    * average score
-    *
-    * */
+     * average score
+     *
+     * */
 
-    public double avgScore () {return  (getMath()+getEng()+getUkr())/3;
+    public double avgScore() {
+        return (getMath() + getEng() + getUkr()) / 3;
     }
-
 
 
     @Override

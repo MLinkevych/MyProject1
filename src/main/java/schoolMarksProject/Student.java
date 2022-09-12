@@ -1,7 +1,7 @@
 package schoolMarksProject;
 
 
-public class Student extends Parent implements Comparable<Student> {
+public class Student extends Person {
 
     private String grade;
     private String studentFirstName;
@@ -51,13 +51,8 @@ public class Student extends Parent implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "Student grade: "  + grade + " " + studentFirstName + " " + studentLastName;
+        return "Student grade: " + grade + " " + studentFirstName + " " + studentLastName;
     }
 
-
-    @Override
-    public int compareTo(Student o) {
-        return getStudentLastName().compareTo(o.getStudentLastName());
-    }
 
 }
